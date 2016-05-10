@@ -1,0 +1,70 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: #ededed;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+span.success {
+  text-transform: lowercase;
+  font-style: italic;
+  text-align: left;
+  display: block;
+  margin: 8px 4px;
+  color: #3c763d;
+}
+
+span.info {
+  text-transform: lowercase;
+  font-style: italic;
+  text-align: left;
+  display: block;
+  margin: 8px 4px;
+  color: #31708f;
+}
+
+span.warning {
+  text-transform: lowercase;
+  font-style: italic;
+  text-align: left;
+  display: block;
+  margin: 8px 4px;
+  color: #8a6d3b;
+}
+
+span.error {
+  text-transform: lowercase;
+  font-style: italic;
+  text-align: left;
+  display: block;
+  margin: 8px 4px;
+  color: #a94442;
+}
+
+.alert-container {
+  display: none;
+}
+h2.place-name {
+  text-align: center;
+  font-style: italic;
+}
+h3.place-address {
+  text-align: center;
+}
+
+.fa-times {
+    padding-left: 10px;
+    margin-top: -3px;
+    cursor: pointer;
+}
+#map-container {
+  overflow: hidden;
+  width: 100%;
+  min-height: 400px;
+}
+#random-place {
+  display: none;
+}
