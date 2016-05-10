@@ -104,7 +104,8 @@ class Places extends MY_Controller {
 
   public function get_random() 
   {
-    $place = $this->place_model->get_random();
+    $user_id = $this->session->user_id;
+    $place = $this->place_model->get_random($user_id);
 
     if(empty($place)) 
     {

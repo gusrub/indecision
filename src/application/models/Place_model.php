@@ -75,10 +75,11 @@ class Place_model extends CI_Model
 
   }
 
-  public function get_random() 
+  public function get_random($user_id) 
   {
     $place = $this
       ->db
+      ->where("user_id", $user_id)
       ->order_by("RAND()")
       ->limit("1")
       ->get("places")->row();
