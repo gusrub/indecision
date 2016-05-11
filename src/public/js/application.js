@@ -62,7 +62,9 @@ $(".application.places.my_places").ready(function(){
             // Add element if is new
             var current_place_id = $("#current_place_id").val();
             if(current_place_id == "") {
-              $("#places-list").prepend('<li class="list-group-item"><a href="#" data-id="'+resp.data.id+'">'+resp.data.name+'</a><i class="fa fa-times fa-2x pull-right" aria-hidden="true"></i></li>');
+              $("#places-list").prepend('<li class="list-group-item"><a class="place-link" href="#" data-id="'+resp.data.id+'">'+resp.data.name+'</a><i class="remove-place fa fa-times fa-2x pull-right" data-id="'+resp.data.id+'" aria-hidden="true"></i></li>');
+              bindLoad();
+              bindRemove;
             } else {
               // Update element
               $(".place-link[data-id="+current_place_id+"]").text($("#name").val());
@@ -156,27 +158,35 @@ $(".application.places.my_places").ready(function(){
       );    
   }
 
+  function bindLoad() {
+    $(".place-link").click(function(e){
+      e.preventDefault();
+      loadPlace($(this).data("id"));
+    });
+  }
+
+  function bindRemove() {
+    $(".remove-place").click(function(){
+      removePlace($(this).data("id"));
+    });
+  }
 
   $("#save-form").submit(function(e){
     e.preventDefault();
   });
+
   $("#btn-save").click(function(){
     savePlace();     
-  });
-
-  $(".place-link").click(function(e){
-    e.preventDefault();
-    loadPlace($(this).data("id"));
-  });
-
-  $(".remove-place").click(function(){
-    removePlace($(this).data("id"));
   });
 
   $("#random-picker-form").submit(function(){
     e.preventDefault();
   });
+
   $("#btn-random").click(function(){
     getRandomPlace();
-  })
+  });
+
+  bindLoad();
+  bindRemove();
 });

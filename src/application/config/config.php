@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-date_default_timezone_set('America/Tijuana');
-
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -25,7 +23,7 @@ date_default_timezone_set('America/Tijuana');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/';
+$config['base_url'] = getenv("CI_BASE_URL");
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +35,7 @@ $config['base_url'] = 'http://localhost/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = getenv("CI_INDEX_PAGE");
 
 /*
 |--------------------------------------------------------------------------
@@ -215,7 +213,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = getenv("CI_LOG_THRESHOLD");
 
 /*
 |--------------------------------------------------------------------------
@@ -316,7 +314,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = hex2bin(getenv('FB_ENCRYPTION_KEY'));
+$config['encryption_key'] = hex2bin(getenv('CI_ENCRYPTION_KEY'));
 
 /*
 |--------------------------------------------------------------------------
@@ -369,13 +367,13 @@ $config['encryption_key'] = hex2bin(getenv('FB_ENCRYPTION_KEY'));
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 7200;
-$config['sess_save_path'] = sys_get_temp_dir();
-$config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_driver'] = getenv("CI_SESS_DRIVER");
+$config['sess_cookie_name'] = getenv("CI_SESS_COOKIE_NAME");
+$config['sess_expiration'] = getenv("CI_SESS_EXPIRATION");
+$config['sess_save_path'] = getenv("CI_SESS_EXPIRATION");
+$config['sess_match_ip'] = getenv("CI_SESS_MATCH_IP");
+$config['sess_time_to_update'] = getenv("CI_SESS_TIME_TO_UPDATE");
+$config['sess_regenerate_destroy'] = getenv("CI_SESS_REGENERATE_DESTROY");
 
 /*
 |--------------------------------------------------------------------------
@@ -392,11 +390,11 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= 'localhost';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie_prefix']	= getenv("CI_COOKIE_PREFIX");
+$config['cookie_domain']	= getenv("CI_COOKIE_DOMAIN");
+$config['cookie_path']		= getenv("CI_COOKIE_PATH");
+$config['cookie_secure']	= getenv("CI_COOKIE_SECURE");
+$config['cookie_httponly'] 	= getenv("CI_COOKIE_HTTPONLY");
 
 /*
 |--------------------------------------------------------------------------
@@ -440,12 +438,12 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = TRUE;
-$config['csrf_token_name'] = 'csrf_token';
-$config['csrf_cookie_name'] = 'csrf_cookie';
-$config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = FALSE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_protection'] = getenv("CI_CSRF_PROTECTION");
+$config['csrf_token_name'] = getenv("CI_CSRF_TOKEN_NAME");
+$config['csrf_cookie_name'] = getenv("CI_CSRF_COOKIE_NAME");
+$config['csrf_expire'] = getenv("CI_CSRF_EXPIRE");
+$config['csrf_regenerate'] = getenv("CI_CSRF_REGENERATE");
+$config['csrf_exclude_uris'] = explode(",", getenv(CI_CSRF_EXCLUDE_URIS));
 
 /*
 |--------------------------------------------------------------------------
@@ -480,7 +478,7 @@ $config['compress_output'] = FALSE;
 | helper' page of the user guide for information regarding date handling.
 |
 */
-$config['time_reference'] = 'local';
+$config['time_reference'] = getenv("CI_TIME_REFERENCE");
 
 /*
 |--------------------------------------------------------------------------

@@ -59,7 +59,8 @@ class Places extends MY_Controller {
         array(
           "name"=>$name,
           "address"=>$address,
-          "user_id"=>$user_id
+          "user_id"=>$user_id,
+          "google_place_id"=>$google_place_id
         ));
 
       if(empty($place)) 
@@ -75,7 +76,8 @@ class Places extends MY_Controller {
         array(
           "name"=>$name,
           "address"=>$address,
-          "user_id"=>$user_id
+          "user_id"=>$user_id,
+          "google_place_id"=>$google_place_id
         ));
 
       if(!$updated) 

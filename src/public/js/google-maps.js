@@ -13,6 +13,7 @@ function initMap() {
     }
 
     $("#address").val(place.formatted_address);
+    $("#google_place_id").val(place.place_id);
   });
 }
 
@@ -36,10 +37,10 @@ function geocodePlaceId(placeId) {
         infowindow.setContent(results[0].formatted_address);
         infowindow.open(map, marker);
       } else {
-        window.alert('No map results found');
+        console.log('No map results found');
       }
     } else {
-      window.alert('Geocoder failed due to: ' + status);
+      console.log('Geocoder failed due to: ' + status);
     }
   });
 }

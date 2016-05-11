@@ -23,24 +23,48 @@ Lots. CRUD's for the users and for all places so admins can manage them. Also CR
 
 There is a file in `db/model.mwb` that has all the models of the database that you can _"forward-engineer"_ to create the database. Alternatively there is a `db/create_db.sql` script which will do the same. You can use either MySql or MariaDB, either would work. We are using certain functions which are not available on PostgreSQL by the way so beware.
 
+The included model/script will create an `indecision_user` mysql user/schema. Its password its `Str0ngP4ss@ci!`. The user has inser/update/delete permissions only, this is on purpuse to avoid using
+
 ## Application
 
 Once database is created there are certain environment variables that you need to set, mainly:
 
- - FB_ENCRYPTION_KEY
- - FB_DB_HOST
- - FB_DB_USER
- - FB_DB_PWD
- - FB_DB_NAME
+ - CI_TIME_REFERENCE
+ - CI_BASE_URL
+ - CI_INDEX_PAGE
+ - CI_LOG_THRESHOLD
+ - CI_ENCRYPTION_KEY
+ - CI_DB_HOST
+ - CI_DB_USER
+ - CI_DB_PWD
+ - CI_DB_NAME
+ - CI_SESS_DRIVER
+ - CI_SESS_COOKIE_NAME
+ - CI_SESS_EXPIRATION
+ - CI_SESS_SAVE_PATH
+ - CI_SESS_MATCH_IP
+ - CI_SESS_TIME_TO_UPDATE
+ - CI_SESS_REGENERATE_DESTROY
+ - CI_COOKIE_PREFIX
+ - CI_COOKIE_DOMAIN
+ - CI_COOKIE_PATH
+ - CI_COOKIE_SECURE
+ - CI_COOKIE_HTTPONLY
+ - CI_CSRF_PROTECTION
+ - CI_CSRF_TOKEN_NAME
+ - CI_CSRF_COOKIE_NAME
+ - CI_CSRF_EXPIRE
+ - CI_CSRF_REGENERATE
+ - CI_CSRF_EXCLUDE_URIS
 
 These variables need to be set so that the `src/application/config/config.php` and `src/application/config/database.php` files can read them, otherwise you need to go to those files and hardcode the encryption key and database credentials which are not under source control for obvious reasons.
 
 If you want to make use of the mailer feature you also need to set this environment variables:
 
- - FB_SMTP_HOST
- - FB_SMTP_PORT
- - FB_SMTP_USER
- - FB_SMTP_PWD
+ - CI_SMTP_HOST
+ - CI_SMTP_PORT
+ - CI_SMTP_USER
+ - CI_SMTP_PWD
 
 Or hardcode the values in `src/application/config/email.php`
 
@@ -48,27 +72,8 @@ Or hardcode the values in `src/application/config/email.php`
 
 Just point the root of the document to the `src/public` folder. Please note that out of security concerns I usually move the `index.php` file from CodeIgniter which bootstraps the application to a different folder so we don't have to expose `system/` and `application/` folders on the webserver.
 
-If you are going to use the included `.htaccess` file and you are not using the root of the webserver (e.g. you are using an alias in apache or a subfolder) then you need to set the `RewriteBase` directive in it, so for instance, if you host the application in:
+There is an included `htaccess.txt` file that you must rename to `.htaccess` if you want to have friendly URL's, that is, without the `index.php` in the URL.
 
- > http://localhost/indecision
-
-Then you need to set the rewrite base to that path like:
-
-```
-RewriteBase /indecision
-```
-
-And you will also need to change the `base_url` config option in `src/application/config/config.php` array value to have the relative path, so you would have something like:
-
-```
-$config['base_url'] = 'http://localhost/indecision';
-```
-If you don't want to use the htaccess file you need to set the index page in `src/application/config/config.php` as well:
-
-```
-$config['index_page'] = 'index.php';
-```
-
-Otherwise it must be left blank.
+This file of course should be in the document root of your webserver. The included file also exports the env vars so you can change them there if you don't want to export them system-wide.
 
 Thats it.

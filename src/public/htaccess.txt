@@ -1,0 +1,44 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /
+  # Hide the application and system directories by redirecting the request to index.php
+  RewriteRule ^(application|system|\.git|/css|/img|/js) index.php/$1 [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?/$1 [QSA,L]
+</IfModule>
+
+SetEnv CI_BASE_URL "changeme"
+SetEnv CI_INDEX_PAGE "changeme"
+SetEnv CI_LOG_THRESHOLD "changeme"
+SetEnv CI_ENCRYPTION_KEY "changeme"
+SetEnv CI_SESS_DRIVER "changeme"
+SetEnv CI_SESS_COOKIE_NAME "changeme"
+SetEnv CI_SESS_EXPIRATION "changeme"
+SetEnv CI_SESS_SAVE_PATH "changeme"
+SetEnv CI_SESS_MATCH_IP "changeme"
+SetEnv CI_SESS_TIME_TO_UPDATE "changeme"
+SetEnv CI_SESS_REGENERATE_DESTROY "changeme"
+SetEnv CI_COOKIE_PREFIX "changeme"
+SetEnv CI_COOKIE_DOMAIN "changeme"
+SetEnv CI_COOKIE_PATH "changeme"
+SetEnv CI_COOKIE_SECURE "changeme"
+SetEnv CI_COOKIE_HTTPONLY "changeme"
+SetEnv CI_CSRF_PROTECTION "changeme"
+SetEnv CI_CSRF_TOKEN_NAME "changeme"
+SetEnv CI_CSRF_COOKIE_NAME "changeme"
+SetEnv CI_CSRF_EXPIRE "changeme"
+SetEnv CI_CSRF_REGENERATE "changeme"
+SetEnv CI_CSRF_EXCLUDE_URIS "changeme"
+SetEnv CI_TIME_REFERENCE "changeme"
+
+SetEnv CI_DB_HOST "changeme"
+SetEnv CI_DB_USER "changeme"
+SetEnv CI_DB_PWD "changeme"
+SetEnv CI_DB_NAME "changeme"
+
+SetEnv CI_SMTP_HOST "changeme"
+SetEnv CI_SMTP_PORT "changeme"
+SetEnv CI_SMTP_USER "changeme"
+SetEnv CI_SMTP_PWD "changeme" 
+
