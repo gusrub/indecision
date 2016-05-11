@@ -370,7 +370,7 @@ $config['encryption_key'] = hex2bin(getenv('CI_ENCRYPTION_KEY'));
 $config['sess_driver'] = getenv("CI_SESS_DRIVER");
 $config['sess_cookie_name'] = getenv("CI_SESS_COOKIE_NAME");
 $config['sess_expiration'] = getenv("CI_SESS_EXPIRATION");
-$config['sess_save_path'] = getenv("CI_SESS_EXPIRATION");
+$config['sess_save_path'] = getenv("CI_SESS_SAVE_PATH");
 $config['sess_match_ip'] = getenv("CI_SESS_MATCH_IP");
 $config['sess_time_to_update'] = getenv("CI_SESS_TIME_TO_UPDATE");
 $config['sess_regenerate_destroy'] = getenv("CI_SESS_REGENERATE_DESTROY");
@@ -443,7 +443,7 @@ $config['csrf_token_name'] = getenv("CI_CSRF_TOKEN_NAME");
 $config['csrf_cookie_name'] = getenv("CI_CSRF_COOKIE_NAME");
 $config['csrf_expire'] = getenv("CI_CSRF_EXPIRE");
 $config['csrf_regenerate'] = getenv("CI_CSRF_REGENERATE");
-$config['csrf_exclude_uris'] = explode(",", getenv(CI_CSRF_EXCLUDE_URIS));
+$config['csrf_exclude_uris'] = explode(",", getenv("CI_CSRF_EXCLUDE_URIS"));
 
 /*
 |--------------------------------------------------------------------------

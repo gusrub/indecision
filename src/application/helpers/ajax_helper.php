@@ -65,7 +65,8 @@ if ( !function_exists('json_response') )
     }
     
 
-    if($json_error = json_last_error_msg() != NULL) 
+    $json_error = json_last_error_msg();
+    if($json_error != NULL && $json_error != "No error") 
     {
       log_error(__FILE__, __LINE__, __FUNCTION__, "Error while encoding a json response: {$json_error}");
     }
@@ -88,7 +89,7 @@ if (!function_exists('json_last_error_msg'))
     function json_last_error_msg() 
     {
         static $errors = array(
-            JSON_ERROR_NONE             => null,
+            JSON_ERROR_NONE             => 'No error',
             JSON_ERROR_DEPTH            => 'Maximum stack depth exceeded',
             JSON_ERROR_STATE_MISMATCH   => 'Underflow or the modes mismatch',
             JSON_ERROR_CTRL_CHAR        => 'Unexpected control character found',

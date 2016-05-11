@@ -77,14 +77,22 @@ class Place_model extends CI_Model
 
   public function get_random($user_id) 
   {
-    $place = $this
+    # Get the whole list of ID's and then select a random value
+    # This is way faster than doing SQL RAND()
+    $places = $this
       ->db
+      ->select("id")
       ->where("user_id", $user_id)
-      ->order_by("RAND()")
-      ->limit("1")
-      ->get("places")->row();
+      ->get("places")->result_array();
 
-    return $place;
+    $key = array_rand($places);
+    $place = $places[$key];
+    $place_id = $place["id"];
+
+    return $this
+      ->db
+      ->where("id", $place_id)
+      ->get("places")->row();
   }
 
 }

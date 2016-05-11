@@ -111,7 +111,7 @@ class Places extends MY_Controller {
 
     if(empty($place)) 
     {
-      show_json_response(500, JSON_RESPONSE_ERROR, "There was an error trying to get random place. Sorry.");         
+      show_json_response(500, JSON_RESPONSE_ERROR, "There was an error trying to get random place. Sorry.");
     }
 
     show_json_response(200, JSON_RESPONSE_INFO, "Random place", $place);
