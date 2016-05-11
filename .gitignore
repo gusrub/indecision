@@ -1,4 +1,4 @@
 *.env
 *.bak
 *.htaccess
-
+*.DS_Store
